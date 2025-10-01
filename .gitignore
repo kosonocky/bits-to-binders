@@ -1,4 +1,6 @@
 *.png
+results/*.csv
+*.tar.gz
 
 
 # Byte-compiled / optimized / DLL files

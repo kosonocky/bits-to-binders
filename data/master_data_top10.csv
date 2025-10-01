@@ -1,0 +1,13 @@
+team,global_id,Cytotoxicity AUC (R: CD20),Cytotoxicity AUC (K: Control),Fold Change in CTV MFI AUC (Proliferation),Cytotoxicity AUC (R-K),% Cytokine+,Fold Change in Total Cell Count/Well (Expansion),Cytotoxicity AUC (R-K) MinMax Norm,% Cytokine+ MinMax Norm,Fold Change in Total Cell Count/Well (Expansion) MinMax Norm,Sum of Norms,Final Ranking
+Control,CAR28z-WT,269.10,191.50,15.41,77.60,21.83,14.12,1.00,1.00,1.00,3.00,na
+Control,Control,121.40,118.30,5.11,3.10,1.57,2.68,0.00,0.00,0.00,0.00,na
+Perez Lab Gators,1506,280.50,227.60,9.00,52.90,22.63,5.95,0.67,1.04,0.29,1.99,1
+Amigo Acids,5300,272.40,260.70,13.37,11.70,34.83,4.86,0.12,1.64,0.19,1.95,2
+Schoeder Lab,5981,284.80,280.50,12.18,4.30,22.53,5.94,0.02,1.03,0.29,1.34,3
+SNU LCDD,3718,277.60,254.20,11.29,23.40,10.00,5.64,0.27,0.42,0.26,0.95,4
+Nucleate UK London,2383,260.90,214.70,7.31,46.20,2.73,4.20,0.58,0.06,0.13,0.77,5
+SNU LCDD,3494,285.30,267.40,10.95,17.90,7.40,5.68,0.20,0.29,0.26,0.75,6
+Binding Illini,5624,196.70,209.90,6.36,-13.20,3.37,5.94,-0.22,0.09,0.29,0.16,7
+LBM,1892,73.47,118.00,3.38,-44.53,1.07,3.01,-0.64,-0.02,0.03,-0.63,8
+CAD Pro,1304,61.09,119.60,3.58,-58.51,0.57,2.99,-0.83,-0.05,0.03,-0.85,9
+AIBI,3109,58.73,157.90,3.36,-99.17,0.90,3.02,-1.37,-0.03,0.03,-1.38,10

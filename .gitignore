@@ -2,6 +2,9 @@
 results/*.csv
 *.tar.gz
 
+tmp/
+_adaptyv_selection_data/
+_archive/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

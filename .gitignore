@@ -3,8 +3,15 @@ results/*.csv
 *.tar.gz
 
 tmp/
+_tmp/
 _adaptyv_selection_data/
 _archive/
+_archive_pre_reindex/
+data/good/mmseqs/
+data/maybe_needs_recomputing_boltz/
+data/needs_recomputing/
+data/mpnn_score_cache/
+data/good/tlimmuno2/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

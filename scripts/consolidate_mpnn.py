@@ -97,7 +97,7 @@ DIRNAMES = [
     "singleaascorewithseq_solublempnn",
 ]
 ROOT = "../../LigandMPNN/outputs/bits_to_binders"
-OUT_CSV = "../data/consolidated_mpnn_scores.csv"
+OUT_CSV = "../data/needs_recomputing/mpnn/consolidated_mpnn_scores.csv"
 CACHE_DIR = "../data/mpnn_score_cache"   # will store one tiny .csv per .pt
 USE_PROCESSES = True                     # set False to try threads
 MAX_WORKERS = min(8, os.cpu_count() or 4)  # start conservative for disk

@@ -12,6 +12,7 @@ data/maybe_needs_recomputing_boltz/
 data/needs_recomputing/
 data/mpnn_score_cache/
 data/good/tlimmuno2/
+data/jakub/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

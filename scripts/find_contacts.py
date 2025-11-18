@@ -161,6 +161,7 @@ def main():
                 rows.append(row)
 
     disulf_df = pd.DataFrame(rows)
+    disulf_df = disulf_df.sort_values("global_id").reset_index(drop=True)
     disulf_df.to_csv("../data/disulfide_and_pipi_contacts.csv", index=False)
 
 

@@ -20,7 +20,7 @@ The Physicist,3,466,16,0.034,16,LM,,,,,Yes,,"NCEPANPSEKNSPSTQYC (166-184, chain 
 Zist Rayanesh,4,308,10,0.032,18,Diffusion,Yes,Yes,,,Yes,Yes,Yes,ColabFold,ProteinMPNN,Yes,Iterative RFdiffusion for minibinders + MPNN + FastRelax + linker scaffold + ColabFold + Pyrosetta,"FastRelax, ColabFold + Pyrosetta",,Very intricate iterative process; nonstandard
 Picaso Protein,4,466,15,0.032,19,"LM, Other",Yes,,,,Yes,,kiiiinda?,AlphaFold2,,,1) Nanobody + LM / Raygun; 2) de novo design; 3) make cyclic peptides w/ AF; Mutate from BLOSUM + AF2 pLDDT to optimize,AF2 refinement,De novo binders + loops how?,
 Undergraduate Design,3,466,14,0.03,20,Diffusion,Yes,,,Yes,,,,AlphaFold2,ProteinMPNN,,Iterative RFdiffusion with corruption; ProteinMPNN; AF2,AF2,,Interesting corruption / de-corruption diffusion method
-Antigeneiouses,4,466,13,0.028,21,"Diffusion, Rational",Yes,,,,Yes,,"Yes, template binders",AlphaFold2,ProteinMPNN,,Binder+AFmultimer; RFdiffusion; ProteinMPNN,AF,,
+Antigeniuses,4,466,13,0.028,21,"Diffusion, Rational",Yes,,,,Yes,,"Yes, template binders",AlphaFold2,ProteinMPNN,,Binder+AFmultimer; RFdiffusion; ProteinMPNN,AF,,
 Binder Builder,4,466,13,0.028,21,Diffusion,Yes,,,,,,,AlphaFold2,SolubleMPNN,,RFdiffusion + SolubleMPNN,AF2 + iterative SolubleMPNN,,
 CIIRC,3,466,11,0.024,23,"Diffusion, BindCraft",Yes,,,,,,,"AlphaFold2, HelixFold",ProteinMPNN,,RFdiffusion; ProteinMPNN; HelixFold/AFmultimer; BindCraft for some,Helixfold/AFmultimer,,
 Evaneil,2,466,9,0.019,24,Diffusion,,,,,Yes,No,Cropped ECM residues,,ProteinMPNN,,"RFdiffusion, ProteinMPNN",No,,

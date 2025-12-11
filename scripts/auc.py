@@ -716,6 +716,12 @@ def longest_duplicated_substring(seq):
     total_occurrences = count_overlapping(seq, best_substring)
     return max_len, best_substring, total_occurrences
 
+def ratio_of_letter(seq, letters):
+    seq = seq.upper()
+    length = len(seq)
+    count = sum(seq.count(letter) for letter in letters)
+    return count / length if length > 0 else 0.0
+
 
 # -----------------------------
 # apply feature functions
@@ -740,6 +746,12 @@ metrics_df[
 metrics_df["total_duplicated_residues"] = (
     metrics_df["longest_dup_substr_len"] * metrics_df["longest_dup_occurrences"]
 )
+
+metrics_df["ratio_K"] = metrics_df["sequence"].apply(lambda seq: ratio_of_letter(seq, ['K']))
+metrics_df["ratio_E"] = metrics_df["sequence"].apply(lambda seq: ratio_of_letter(seq, ['E']))
+metrics_df["ratio_KE"] = metrics_df["sequence"].apply(lambda seq: ratio_of_letter(seq, ['K', 'E']))
+metrics_df["ratio_A"] = metrics_df["sequence"].apply(lambda seq: ratio_of_letter(seq, ['A']))
+metrics_df["ratio_AKE"] = metrics_df["sequence"].apply(lambda seq: ratio_of_letter(seq, ['A', 'K', 'E']))
 
 
 # -----------------------------
@@ -779,6 +791,11 @@ REQUIRED_FEATURES = [
     "longest_dup_occurrences",
     "dna_gc_content",
     "seq_charge",
+    "ratio_K",
+    "ratio_E",
+    "ratio_A",
+    "ratio_KE",
+    "ratio_AKE",
 ]
 
 # numeric feature list (exclude global_id)

@@ -13,6 +13,7 @@ data/needs_recomputing/
 data/mpnn_score_cache/
 data/good/tlimmuno2/
 data/jakub/
+adaptyv_other/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

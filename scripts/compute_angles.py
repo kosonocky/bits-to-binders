@@ -374,3 +374,12 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+# NOTE TO RUN:
+# python axis_angle_bc_vs_a_termini.py \
+#   ../data/jakub/data/boltz/predictions \
+#   --only-cif \
+#   --cif-pattern "*_model_0.cif" \
+#   --jobs 16 \
+#   --out angles_bc_vs_a.csv

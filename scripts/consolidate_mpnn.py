@@ -1,82 +1,3 @@
-# import os
-# import operator
-# import numpy as np
-# import pandas as pd
-# import torch
-# from concurrent.futures import ProcessPoolExecutor, as_completed
-# from tqdm.auto import tqdm
-
-# AAS = ["A","C","D","E","F","G","H","I","K","L","M","N","P","Q","R","S","T","V","W","Y"]
-# AA_GETTER = operator.itemgetter(*AAS)
-# POS_KEYS_80 = tuple(f"A{i+1}" for i in range(80))
-
-# def score_one(dirname, fpath, cutoff_len=80):
-#     try:
-#         try:
-#             torch.set_num_threads(1)
-#         except Exception:
-#             pass
-#         data = torch.load(fpath, map_location="cpu", weights_only=False)
-
-#         seq_idx = data["native_sequence"][:cutoff_len]
-#         L = len(seq_idx)
-#         if L == 0:
-#             return {"dirname": dirname, "filename": os.path.basename(fpath), "total_score": None}
-
-#         rows = [AA_GETTER(data["mean_of_probs"][POS_KEYS_80[i]]) for i in range(L)]
-#         prob = np.asarray(rows, dtype=np.float32)  # [L, 20]
-
-#         r = np.arange(L, dtype=np.int64)
-#         c = np.asarray(seq_idx, dtype=np.int64)
-#         total_score = float(prob[r, c].mean())
-
-#         return {"dirname": dirname, "filename": os.path.basename(fpath), "total_score": total_score}
-#     except Exception:
-#         return {"dirname": dirname, "filename": os.path.basename(fpath), "total_score": None}
-
-# def build_tasks():
-#     dirnames = [
-#         "autoregwithoutseq_proteinmpnn",
-#         "singleaascorewithoutseq_proteinmpnn",
-#         "autoregwithoutseq_solublempnn",
-#         "singleaascorewithoutseq_solublempnn",
-#         "autoregwithseq_proteinmpnn",
-#         "singleaascorewithseq_proteinmpnn",
-#         "autoregwithseq_solublempnn",
-#         "singleaascorewithseq_solublempnn",
-#     ]
-#     tasks = []
-#     for dirname in dirnames:
-#         dpath = f"../../LigandMPNN/outputs/bits_to_binders/{dirname}"
-#         if not os.path.isdir(dpath):
-#             continue
-#         with os.scandir(dpath) as it:
-#             for ent in it:
-#                 if ent.is_file() and ent.name.endswith(".pt"):
-#                     tasks.append((dirname, ent.path))
-#     return tasks
-
-# def run_process_pool(tasks, max_workers):
-#     rows = []
-#     with ProcessPoolExecutor(max_workers=max_workers) as ex:
-#         futures = [ex.submit(score_one, d, p) for d, p in tasks]
-#         for fut in tqdm(as_completed(futures), total=len(futures), desc="Scoring files", unit="file"):
-#             rows.append(fut.result())
-#     return rows
-
-# if __name__ == "__main__":
-#     # optional: reduce BLAS threads globally before importing torch in a fresh run:
-#     # import os; os.environ["OMP_NUM_THREADS"]="1"; os.environ["MKL_NUM_THREADS"]="1"
-
-#     tasks = build_tasks()
-#     max_workers = min(8, os.cpu_count() or 4)   # start conservative
-#     rows = run_process_pool(tasks, max_workers)
-#     df = pd.DataFrame(rows)
-#     df.to_csv("../data/consolidated_mpnn_scores.csv", index=False)
-
-
-
-
 import os
 import csv
 import time
@@ -97,7 +18,7 @@ DIRNAMES = [
     "singleaascorewithseq_solublempnn",
 ]
 ROOT = "../../LigandMPNN/outputs/bits_to_binders"
-OUT_CSV = "../data/needs_recomputing/mpnn/consolidated_mpnn_scores.csv"
+OUT_CSV = "../data/needs_recomputing/mpnn/consolidated_mpnn_scores_v2.csv"
 CACHE_DIR = "../data/mpnn_score_cache"   # will store one tiny .csv per .pt
 USE_PROCESSES = True                     # set False to try threads
 MAX_WORKERS = min(8, os.cpu_count() or 4)  # start conservative for disk

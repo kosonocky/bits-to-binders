@@ -15,7 +15,7 @@ from sklearn.preprocessing import LabelEncoder, StandardScaler, label_binarize
 
 METRICS_PATH = "../data/12k_all_metrics.csv"
 RESULTS_PATH = "../data/12k_all_results.csv"
-OUTPUT_CSV = "../results/analysis/feature_single_aucs_10fold_four_models_with_perclass_lr_rf.csv"
+OUTPUT_CSV = "../results/analysis/feature_single_aucs_10fold_lr_rf_up_vs_rest_threeclass.csv"
 
 N_JOBS = -1
 N_SPLITS = 10
@@ -38,6 +38,13 @@ RF_MIN_SAMPLES_LEAF = 1
 metrics_df = pd.read_csv(METRICS_PATH)
 results_df = pd.read_csv(RESULTS_PATH)
 
+# align and filter: drop rows where either detected flag is False
+results_df[DNA_DETECTED_COL] = results_df[DNA_DETECTED_COL].fillna(False).astype(bool)
+results_df[RECOVERED_COL] = results_df[RECOVERED_COL].fillna(False).astype(bool)
+
+keep_mask = results_df[DNA_DETECTED_COL] & results_df[RECOVERED_COL]
+metrics_df = metrics_df.loc[keep_mask].reset_index(drop=True)
+results_df = results_df.loc[keep_mask].reset_index(drop=True)
 
 # numeric feature list (exclude global_id)
 feature_cols = [
@@ -47,12 +54,23 @@ feature_cols = [
 
 
 # -----------------------------
-# label encoder for fourclass
+# derive 3-class target: Up / Not_Sig / Down
 # -----------------------------
 
-le = LabelEncoder()
-le.fit(results_df[FOURCLASS_COL].dropna().astype(str))
-FOURCLASS_LABELS = list(le.classes_)
+def _to_threeclass(s):
+    s = str(s).strip().lower()
+    if s == "up":
+        return "Up"
+    if s == "down":
+        return "Down"
+    return "Not_Sig"
+
+
+threeclass_series = results_df[FOURCLASS_COL].fillna("").map(_to_threeclass)
+
+le3 = LabelEncoder()
+le3.fit(threeclass_series.astype(str))
+THREECLASS_LABELS = list(le3.classes_)
 
 
 # -----------------------------
@@ -119,13 +137,15 @@ def _fit_predict_oof_multiclass(X, y_enc, clf, n_splits, random_state, n_classes
     return y_proba_all
 
 
-def binary_auc_cv_single_feature(feature, target_col, model_name):
+def up_vs_rest_auc_cv_single_feature(feature, model_name):
     X_all = metrics_df[[feature]]
-    y_all = results_df.loc[X_all.index, target_col]
+    y_all = results_df.loc[X_all.index, FOURCLASS_COL]
 
     valid = X_all.notna().all(axis=1) & y_all.notna()
     X = X_all.loc[valid]
-    y = y_all.loc[valid].astype(int)
+    y_str = y_all.loc[valid].astype(str)
+
+    y = (y_str.str.strip().str.lower() == "up").astype(int)
 
     if len(np.unique(y)) < 2:
         return np.nan
@@ -146,19 +166,19 @@ def binary_auc_cv_single_feature(feature, target_col, model_name):
         return np.nan
 
 
-def multiclass_micro_and_perclass_auc_cv_single_feature(feature, model_name):
+def threeclass_micro_and_perclass_auc_cv_single_feature(feature, model_name):
     X_all = metrics_df[[feature]]
     y_all = results_df.loc[X_all.index, FOURCLASS_COL]
 
     valid = X_all.notna().all(axis=1) & y_all.notna()
     X = X_all.loc[valid]
-    y_str = y_all.loc[valid].astype(str)
+    y_three = y_all.loc[valid].map(_to_threeclass).astype(str)
 
-    if y_str.nunique() < 2:
-        return np.nan, {lbl: np.nan for lbl in FOURCLASS_LABELS}
+    if y_three.nunique() < 2:
+        return np.nan, {lbl: np.nan for lbl in THREECLASS_LABELS}
 
-    y_enc = le.transform(y_str)
-    n_classes = len(le.classes_)
+    y_enc = le3.transform(y_three)
+    n_classes = len(le3.classes_)
 
     if model_name == "lr":
         clf = _make_lr()
@@ -170,7 +190,7 @@ def multiclass_micro_and_perclass_auc_cv_single_feature(feature, model_name):
     try:
         y_proba_all = _fit_predict_oof_multiclass(X, y_enc, clf, N_SPLITS, RANDOM_STATE, n_classes)
         if y_proba_all is None:
-            return np.nan, {lbl: np.nan for lbl in FOURCLASS_LABELS}
+            return np.nan, {lbl: np.nan for lbl in THREECLASS_LABELS}
 
         y_bin_all = label_binarize(y_enc, classes=np.arange(n_classes))
 
@@ -182,7 +202,7 @@ def multiclass_micro_and_perclass_auc_cv_single_feature(feature, model_name):
         )
 
         per_class = {}
-        for k, lbl in enumerate(FOURCLASS_LABELS):
+        for k, lbl in enumerate(THREECLASS_LABELS):
             try:
                 per_class[lbl] = roc_auc_score(y_bin_all[:, k], y_proba_all[:, k])
             except ValueError:
@@ -190,36 +210,7 @@ def multiclass_micro_and_perclass_auc_cv_single_feature(feature, model_name):
 
         return micro_auc, per_class
     except ValueError:
-        return np.nan, {lbl: np.nan for lbl in FOURCLASS_LABELS}
-
-
-def up_vs_rest_auc_cv_single_feature(feature, model_name):
-    X_all = metrics_df[[feature]]
-    y_all = results_df.loc[X_all.index, FOURCLASS_COL]
-
-    valid = X_all.notna().all(axis=1) & y_all.notna()
-    X = X_all.loc[valid]
-    y_str = y_all.loc[valid].astype(str)
-
-    y = (y_str.str.lower() == "up").astype(int)
-
-    if len(np.unique(y)) < 2:
-        return np.nan
-
-    if model_name == "lr":
-        clf = _make_lr()
-    elif model_name == "rf":
-        clf = _make_rf()
-    else:
-        raise ValueError(f"Unknown model_name: {model_name}")
-
-    try:
-        y_proba = _fit_predict_oof_binary(X, y, clf, N_SPLITS, RANDOM_STATE)
-        if y_proba is None:
-            return np.nan
-        return roc_auc_score(y, y_proba)
-    except ValueError:
-        return np.nan
+        return np.nan, {lbl: np.nan for lbl in THREECLASS_LABELS}
 
 
 # -----------------------------
@@ -230,34 +221,26 @@ def _score_feature(feature):
     row = {"feature": feature}
 
     for model_name in ("lr", "rf"):
-        auc_dna = binary_auc_cv_single_feature(feature, DNA_DETECTED_COL, model_name=model_name)
-        auc_rec = binary_auc_cv_single_feature(feature, RECOVERED_COL, model_name=model_name)
-
-        auc_4c_micro, auc_4c_perclass = multiclass_micro_and_perclass_auc_cv_single_feature(
+        auc_up = up_vs_rest_auc_cv_single_feature(feature, model_name=model_name)
+        auc_3c_micro, auc_3c_perclass = threeclass_micro_and_perclass_auc_cv_single_feature(
             feature, model_name=model_name
         )
 
-        auc_up = up_vs_rest_auc_cv_single_feature(feature, model_name=model_name)
-
-        row[f"roc_auc_{model_name}_{DNA_DETECTED_COL}_10cv"] = auc_dna
-        row[f"roc_auc_{model_name}_{RECOVERED_COL}_10cv"] = auc_rec
-        row[f"roc_auc_{model_name}_fourclass_micro_10cv"] = auc_4c_micro
         row[f"roc_auc_{model_name}_up_vs_rest_10cv"] = auc_up
+        row[f"roc_auc_{model_name}_threeclass_micro_10cv"] = auc_3c_micro
 
-        for lbl in FOURCLASS_LABELS:
+        for lbl in THREECLASS_LABELS:
             safe_lbl = str(lbl).replace(" ", "_")
-            row[f"roc_auc_{model_name}_fourclass_{safe_lbl}_10cv"] = auc_4c_perclass.get(lbl, np.nan)
+            row[f"roc_auc_{model_name}_threeclass_{safe_lbl}_10cv"] = auc_3c_perclass.get(lbl, np.nan)
 
     return row
 
 
 def main():
-    rows = Parallel(n_jobs=N_JOBS)(
-        delayed(_score_feature)(feat) for feat in feature_cols
-    )
+    rows = Parallel(n_jobs=N_JOBS)(delayed(_score_feature)(feat) for feat in feature_cols)
 
     out_df = pd.DataFrame(rows).sort_values(
-        by="roc_auc_lr_fourclass_micro_10cv",
+        by="roc_auc_lr_threeclass_micro_10cv",
         ascending=False,
     ).reset_index(drop=True)
 

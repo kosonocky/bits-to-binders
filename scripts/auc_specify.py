@@ -16,19 +16,24 @@ METRICS_PATH = "../data/12k_all_metrics.csv"
 RESULTS_PATH = "../data/12k_all_results.csv"
 
 FEATURE_COMBO = [
-    # "dna_gc_content",
+    # "ratio_KE",
+    # "min_gravy_len_20",
+    # "esmfold_plddt_binder_middle",
     # "aa_sequence_entropy",
-    "dna_sequence_entropy",
-    "dssp_ke_alpha_ratio",
+    # "dssp_ke_alpha_ratio",
+    # "dna_gc_content",
+    # "dna_sequence_entropy",
     # "dssp_beta_ratio",
     # "dssp_other_ratio",
-    "seq_kl_vs_human",
-    "boltz_rosetta_complex_normalized",
+    # "seq_kl_vs_human",
+    # "boltz_rosetta_complex_normalized",
     # "gravy_score",
     # "boltz_sap_score",
     # "seq_charge",
     # "num_disulfide_within_chain",
     # "num_cysteines",
+    # "boltz_singleaascorewithoutseq_solublempnn",
+    # "esmfold_end_C_B_pdockq2_max",
     # "esm2_full_LL_alone",
     # "boltz_rosetta_A_BC_iptm",
 ]
@@ -50,11 +55,17 @@ RF_N_JOBS = -1
 # -----------------------------
 
 metrics_df = pd.read_csv(METRICS_PATH)
-metrics_df["closest_ab_pident"] = metrics_df["closest_ab_pident"].fillna(0)
-metrics_df["ubiquitin_pident"] = metrics_df["ubiquitin_pident"].fillna(0)
-
 results_df = pd.read_csv(RESULTS_PATH)
 results_df["leah_12k_Significant"] = results_df["leah_12k_Significant"].fillna(False)
+
+# drop rows where leah_12k_twist_dna_detected or leah_12k_detected is False
+metrics_df = metrics_df.loc[
+    results_df["leah_12k_twist_dna_detected"] & results_df["leah_12k_detected"]
+].reset_index(drop=True)
+results_df = results_df.loc[
+    results_df["leah_12k_twist_dna_detected"] & results_df["leah_12k_detected"]
+].reset_index(drop=True)
+print(f"After filtering, {len(metrics_df)} samples remain.")
 
 
 # -----------------------------
@@ -281,29 +292,29 @@ def main():
 
     models = [
         ("LR", make_lr()),
-        ("RF", make_rf()),
+        # ("RF", make_rf()),
     ]
 
     for name, model in models:
         print(f"\n== {name} ==")
 
-        auc_twist = binary_auc_for_features(
-            feats,
-            target_col="leah_12k_twist_dna_detected",
-            clf=model,
-            use_cv=USE_CV,
-            n_splits=N_SPLITS,
-        )
-        print(f"ROC AUC leah_12k_twist_dna_detected: {auc_twist:.4f}")
+        # auc_twist = binary_auc_for_features(
+        #     feats,
+        #     target_col="leah_12k_twist_dna_detected",
+        #     clf=model,
+        #     use_cv=USE_CV,
+        #     n_splits=N_SPLITS,
+        # )
+        # print(f"ROC AUC leah_12k_twist_dna_detected: {auc_twist:.4f}")
 
-        auc_detected = binary_auc_for_features(
-            feats,
-            target_col="leah_12k_detected",
-            clf=model,
-            use_cv=USE_CV,
-            n_splits=N_SPLITS,
-        )
-        print(f"ROC AUC leah_12k_detected: {auc_detected:.4f}")
+        # auc_detected = binary_auc_for_features(
+        #     feats,
+        #     target_col="leah_12k_detected",
+        #     clf=model,
+        #     use_cv=USE_CV,
+        #     n_splits=N_SPLITS,
+        # )
+        # print(f"ROC AUC leah_12k_detected: {auc_detected:.4f}")
 
         mc_micro, mc_per_class = multiclass_auc_for_features(
             feats,
@@ -311,7 +322,7 @@ def main():
             use_cv=USE_CV,
             n_splits=N_SPLITS,
         )
-        print(f"ROC AUC fourclass micro: {mc_micro:.4f}")
+        # print(f"ROC AUC fourclass micro: {mc_micro:.4f}")
         for cls_name, auc_val in zip(le.classes_, mc_per_class):
             print(f"ROC AUC fourclass {cls_name}: {auc_val:.4f}")
 

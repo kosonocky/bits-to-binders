@@ -1,0 +1,29 @@
+team,main_method,MPNN_model,md,fast/amberrelax,folding_model,ESM2_used,iterative_diffusion,number_of_unique_seqs_submitted,number_up
+AIBI,Unspecified seq/struct co-design model,None,FALSE,FALSE,None,TRUE,FALSE,466,48
+Amigo Acids,RFdiffusion,ProteinMPNN,FALSE,TRUE,ColabFold,FALSE,TRUE,187,11
+Antigeniuses,RFdiffusion,ProteinMPNN,FALSE,FALSE,AF-Multimer,FALSE,FALSE,466,13
+Binder Bot Engineers,Unspecified active learning method,ProteinMPNN,FALSE,FALSE,AF2,FALSE,FALSE,466,23
+Binder Builder,RFdiffusion,SolubleMPNN,FALSE,FALSE,AF-Multimer,FALSE,FALSE,466,13
+Binding Illini,Chroma,ProteinMPNN,FALSE,FALSE,ColabFold,TRUE,TRUE,466,69
+Bionova,RFdiffusion,ProteinMPNN,FALSE,TRUE,AF2 and Chai-1,FALSE,FALSE,466,21
+Bryant Lab,EvoBind-multimer,None,FALSE,FALSE,AF2,FALSE,FALSE,466,6
+CAD Pro,"ESM2, PepMLM, EvoBind",None,FALSE,FALSE,AF2,TRUE,FALSE,466,4
+CIIRC,RFdiffusion,ProteinMPNN,FALSE,FALSE,AF-Multimer and HelixFold,FALSE,FALSE,466,11
+D12,RFdiffusion,ProteinMPNN,FALSE,FALSE,AF2,FALSE,TRUE,466,17
+Evaneil,RFdiffusion,ProteinMPNN,FALSE,FALSE,None,FALSE,FALSE,466,9
+Foldsmiths,RFdiffusion,ProteinMPNN,FALSE,FALSE,AF2,FALSE,FALSE,465,18
+Furman Lab,RFdiffusion or BindCraft,ProteinMPNN,FALSE,FALSE,AF2,FALSE,TRUE,433,48
+LBM,RFdiffusion,ProteinMPNN or CARBonAra,TRUE,FALSE,ColabFold and AF-Multimer,FALSE,FALSE,466,27
+Molecule Masters,RFdiffusion,ProteinMPNN,TRUE,TRUE,AF2,FALSE,TRUE,466,16
+Team Anonymous,Rational + ESMFold,None,FALSE,FALSE,ESMFold,FALSE,FALSE,466,7
+Nucleate UK London,BAGEL,SolubleMPNN,TRUE,FALSE,ESMFold,FALSE,FALSE,414,159
+Perez Lab Gators,RFdiffusion,ProteinMPNN,FALSE,TRUE,AF2,FALSE,TRUE,466,38
+Perforators,RFdiffusion,ProteinMPNN,FALSE,FALSE,ESMFold,FALSE,FALSE,343,2
+The Physicist,ESM2,None,FALSE,FALSE,None,TRUE,FALSE,466,16
+Picaso Protein,Raygun,None,FALSE,FALSE,AF-Multimer,FALSE,FALSE,466,15
+Schoeder Lab,RFdiffusion,ProteinMPNN,TRUE,FALSE,AF2,FALSE,TRUE,466,28
+SNU LCDD,RFdiffusion,ProteinMPNN,TRUE,FALSE,AF2,FALSE,FALSE,466,36
+Tumor Inhibitors,RFdiffusion,ProteinMPNN,TRUE,FALSE,AF2,FALSE,TRUE,466,23
+Undergraduate Design,RFdiffusion,ProteinMPNN,FALSE,FALSE,AF-Multimer,FALSE,TRUE,466,14
+Virtue Therapeutics,BindCraft,None,FALSE,FALSE,None,FALSE,FALSE,48,2
+Zist Rayanesh,RFdiffusion,ProteinMPNN,FALSE,TRUE,ColabFold,FALSE,FALSE,308,10

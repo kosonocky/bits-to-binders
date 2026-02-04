@@ -1,29 +1,29 @@
-team,confidence,number_of_unique_seqs_submitted,number_of_significant_seqs,percent_of_significant_seqs,12k_hit_rate_ranking,primary_method_type,downselection,fast_relax_used,md_used,diffusion_recycle,template_or_hotspot,linkers_added,template_or_hotspots_info,folding_model,mpnn_model,rosetta_used,method_name,downselection_method,method_questions,notes
-Perez Lab Gators,4,466,38,0.082,5,Diffusion,Yes,,,Yes,Yes,,"Yes, from Abs mostly",AlphaFold2,ProteinMPNN,,"RFdiffusion for binding residues (or used Ab epitopes), freeze, RFdiffusion again, ProteinMPNN, AF2",AF2,,
-Amigo Acids,3,187,11,0.059,8,Diffusion,Yes,Yes,,Yes,Yes,,Yes,ColabFold,ProteinMPNN,Yes,"RFdiffusion, ProteinMPNN, AFPulldown, RFdifusion, ProteinMPNN+FastRelax, ColabFold","AFPulldown, Fastrelax, Colabfold",,
-Schoeder Lab,3,466,28,0.06,7,"Diffusion, Hallucination",Yes,,Yes,,Yes,Yes,Yes,AlphaFold2,ProteinMPNN,Yes,"MD + PCA to get conformations, RFdiffusion, ProteinMPNN, AF2, Rosetta; OR: AF hallucination for peptides + linkers","AF, Rosetta",,Very detailed!
-SNU LCDD,4,466,36,0.077,6,Diffusion,Yes,,Yes,,,,,AlphaFold2,ProteinMPNN,Yes,RFdiffusion De Novo or Graft Antibody CDR loops or graft CDRH3 only; ProteinMPNN; Rosetta filtering; AF2; MD,"Rosetta, AF2, MD",,
-Nucleate UK London,3,414,159,0.384,1,LM,Yes,,Yes,,,Yes,,ESMFold,SolubleMPNN,?,ESMFold optimization design; SolubleMPNN; OpenMM,See Hie et al,,
-Binding Illini,2,466,69,0.148,2,Diffusion,Yes,,,,Yes,,"Yes, residues from Rituximab",ColabFold,ProteinMPNN,,"Chroma, ESM, ColabFold",ColabFold,,"Similar workflow to EvoBind2 (ProteinMPNN, ColabFold)"
-LBM,1,466,27,0.058,9,Diffusion,Yes,,Yes,,,,,AlphaFold2,"ProteinMPNN, CARBonAra",,GROMACS MD; RFdiffusion; ProteinMPNN/CARBonAra;Colabfold;AF2;AFmultimer,AF2,,
-CAD Pro,4,466,4,0.009,27,LM,Yes,,,,,,,AlphaFold2,,?,"PEPMLM & ESM, scoring fxns, AF2, Hdock, Evobind","AF2, scoring fxns, Hdock, Evobind",,
-AIBI,3,466,48,0.103,4,Diffusion,,,,,Yes,,Yes,,,,Seq/Struct diffusion model; ESM2 to impute from some of the prev designs,,No citation/vague,
-Furman Lab,4,433,48,0.111,3,"Diffusion, BindCraft",Yes,,,Yes,Yes,,Yes,AlphaFold2,ProteinMPNN,Yes,PatchMAN; RFdifusion; ProteinMPNN/ColabDesign4; AF2; Rosetta; partial diffusion; BindCraft,AF2; Rosetta,,Potentially multiple methods for diff seqs
-Binder Bot Engineers,3,466,23,0.049,10,Diffusion,Yes,,,,,,,AlphaFold2,,,RFdiffusion + ???,AF2 + Expasy,No idea what's going on here,
-Tumor Inhibitors,3,466,23,0.049,10,Diffusion,Yes,,,,Yes,,Tyr161,AlphaFold2,ProteinMPNN,,"RFdiffusion (beta complex params), select backbones, ColabDesign & ProteinMPNN, AF2 screen","ensure contact with Tyr161 in ECL2, avoid long helices, prohibit contact to diffused neighbor, align w/ MemProtMD mem-bound structure, AF2 downsample",,
-Bionova,4,466,21,0.045,12,Diffusion,Yes,,,,Yes,,CD20 Epitope 3,"AlphaFold2, Chai",ProteinMPNN,,"RFdiffusion, ProtenMPNN, AF2, Chai","AF2, Chai",,
-Virtue Therapeutics,2,48,2,0.042,13,BindCraft,,,,,Yes,,Res that H-bond w/ Ab in 6Y92,,,?,BindCraft,,,Failed default filters
-Foldsmiths,3,466,18,0.039,14,Diffusion,Yes,,,,Yes,,Hotspots based on hydrophobic & mmgbsa,AlphaFold2,ProteinMPNN,,"RFdiffusion, ProteinMPNN, AF w/ init guess & template",AF2,,
-D12,5,466,17,0.036,15,Diffusion,Yes,,,Yes,Yes,,"Yes, multiple hotspots tested, see markdown file",AlphaFold2,ProteinMPNN,Yes,"""Binder Blueprint"", RFdiffusion, ProteinMPNN, AF2, PyRosetta, ColabDesign partial diffusion fixing",AF2 + PyRosetta,,Symmetric and asymmetric diffusion. Great docs!
-Molecule Masters,5,466,16,0.034,16,Diffusion,Yes,Yes,Yes,,,,,AlphaFold2,ProteinMPNN,?,RFdiffusion; ProteinMPNN; FastRelax; AF2; MD sidechain relaxation; Prodigy binding free energy;,FastRelax; AF2; MD sidechain relaxation; Prodigy binding free,,
-The Physicist,3,466,16,0.034,16,LM,,,,,Yes,,"NCEPANPSEKNSPSTQYC (166-184, chain D, 6vja)",ESMFold,,,ESM2-based structure search for antibodies binding similar epitopes,,Epitope in antibody or bound by antibody? How did they go from hit to 80aa?,
-Zist Rayanesh,4,308,10,0.032,18,Diffusion,Yes,Yes,,,Yes,Yes,Yes,ColabFold,ProteinMPNN,Yes,Iterative RFdiffusion for minibinders + MPNN + FastRelax + linker scaffold + ColabFold + Pyrosetta,"FastRelax, ColabFold + Pyrosetta",,Very intricate iterative process; nonstandard
-Picaso Protein,4,466,15,0.032,19,"LM, Other",Yes,,,,Yes,,kiiiinda?,AlphaFold2,,,1) Nanobody + LM / Raygun; 2) de novo design; 3) make cyclic peptides w/ AF; Mutate from BLOSUM + AF2 pLDDT to optimize,AF2 refinement,De novo binders + loops how?,
-Undergraduate Design,3,466,14,0.03,20,Diffusion,Yes,,,Yes,,,,AlphaFold2,ProteinMPNN,,Iterative RFdiffusion with corruption; ProteinMPNN; AF2,AF2,,Interesting corruption / de-corruption diffusion method
-Antigeniuses,4,466,13,0.028,21,"Diffusion, Rational",Yes,,,,Yes,,"Yes, template binders",AlphaFold2,ProteinMPNN,,Binder+AFmultimer; RFdiffusion; ProteinMPNN,AF,,
-Binder Builder,4,466,13,0.028,21,Diffusion,Yes,,,,,,,AlphaFold2,SolubleMPNN,,RFdiffusion + SolubleMPNN,AF2 + iterative SolubleMPNN,,
-CIIRC,3,466,11,0.024,23,"Diffusion, BindCraft",Yes,,,,,,,"AlphaFold2, HelixFold",ProteinMPNN,,RFdiffusion; ProteinMPNN; HelixFold/AFmultimer; BindCraft for some,Helixfold/AFmultimer,,
-Evaneil,2,466,9,0.019,24,Diffusion,,,,,Yes,No,Cropped ECM residues,,ProteinMPNN,,"RFdiffusion, ProteinMPNN",No,,
-Team Anonymous,2,466,7,0.015,25,Rational,Yes,,,,,,,ESMFold,,,Rational + ESMFold,ESMfold,,Start from peptides that probably interact w/ proline-rich (like SH3 + WW) an design an aromatic cradle
-Bryant Lab,5,466,6,0.013,26,AF2 Based?,,,,,,,,ColabFold,,,EvoBind-multimer,No,Unclear how 5-20aa turned into 80aa,
-Perforators,2,343,2,0.006,28,Na,Yes,,,,,,,,,,Na,ESMfold,???,
+team,confidence,number_of_unique_seqs_submitted,number_up,percentage_up_of_submitted,12k_hit_rate_ranking,primary_method_type,downselection,fast_relax_used,md_used,diffusion_recycle,template_or_hotspot,linkers_added,template_or_hotspots_info,folding_model,mpnn_model,rosetta_used,method_name,downselection_method
+AIBI,3,466,48,0.103,4,Diffusion,,,,,Yes,,Yes,,,,Seq/Struct diffusion model; ESM2 to impute from some of the prev designs,
+Amigo Acids,3,187,11,0.059,8,Diffusion,Yes,Yes,,Yes,Yes,,Yes,ColabFold,ProteinMPNN,Yes,"RFdiffusion, ProteinMPNN, AFPulldown, RFdifusion, ProteinMPNN+FastRelax, ColabFold","AFPulldown, Fastrelax, Colabfold"
+Antigeniuses,4,466,13,0.028,21,"Diffusion, Rational",Yes,,,,Yes,,"Yes, template binders",AlphaFold2,ProteinMPNN,,Binder+AFmultimer; RFdiffusion; ProteinMPNN,AF
+Binder Bot Engineers,3,466,23,0.049,10,Diffusion,Yes,,,,,,,AlphaFold2,ProteinMPNN,,RFdiffusion + ???,AF2 + Expasy
+Binder Builder,4,466,13,0.028,21,Diffusion,Yes,,,,,,,AlphaFold2,SolubleMPNN,,RFdiffusion + SolubleMPNN,AF2 + iterative SolubleMPNN
+Binding Illini,2,466,69,0.148,2,Diffusion,Yes,,,,Yes,,"Yes, residues from Rituximab",ColabFold,ProteinMPNN,,"Chroma, ESM, ColabFold",ColabFold
+Bionova,4,466,21,0.045,12,Diffusion,Yes,,,,Yes,,CD20 Epitope 3,"AlphaFold2, Chai",ProteinMPNN,,"RFdiffusion, ProtenMPNN, AF2, Chai","AF2, Chai"
+Bryant Lab,5,466,6,0.013,26,AF2 Based?,,,,,,,,ColabFold,,,EvoBind-multimer,No
+CAD Pro,4,466,4,0.009,27,LM,Yes,,,,,,,AlphaFold2,,?,"PEPMLM & ESM, scoring fxns, AF2, Hdock, Evobind","AF2, scoring fxns, Hdock, Evobind"
+CIIRC,3,466,11,0.024,23,"Diffusion, Bindcraft",Yes,,,,,,,"AlphaFold2, HelixFold",ProteinMPNN,,RFdiffusion; ProteinMPNN; HelixFold/AFmultimer; Bindcraft for some,Helixfold/AFmultimer
+D12,5,466,17,0.036,15,Diffusion,Yes,,,Yes,Yes,,"Yes, multiple hotspots tested, see markdown file",AlphaFold2,ProteinMPNN,Yes,"Binder Blueprint, RFdiffusion, ProteinMPNN, AF2, PyRosetta, ColabDesign partial diffusion fixing",AF2 + PyRosetta
+Evaneil,2,466,9,0.019,24,Diffusion,,,,,Yes,No,Cropped ECM residues,,ProteinMPNN,,"RFdiffusion, ProteinMPNN",No
+Foldsmiths,3,465,18,0.039,14,Diffusion,Yes,,,,Yes,,Hotspots based on hydrophobic & mmgbsa,AlphaFold2,ProteinMPNN,,"RFdiffusion, ProteinMPNN, AF w/ init guess & template",AF2
+Furman Lab,4,433,48,0.111,3,"Diffusion, Bindcraft",Yes,,,Yes,Yes,,Yes,AlphaFold2,ProteinMPNN,Yes,PatchMAN; RFdifusion; ProteinMPNN/ColabDesign4; AF2; Rosetta; partial diffusion; bindcraft,AF2; Rosetta
+LBM,1,466,27,0.058,9,Diffusion,Yes,,Yes,,,,,AlphaFold2,"ProteinMPNN, CARBonAra",,GROMACS MD; RFdiffusion; ProteinMPNN/CARBonAra;Colabfold;AF2;AFmultimer,AF2
+Molecule Masters,5,466,16,0.034,16,Diffusion,Yes,Yes,Yes,,,,,AlphaFold2,ProteinMPNN,?,RFdiffusion; ProteinMPNN; FastRelax; AF2; MD sidechain relaxation; Prodigy binding free energy;,FastRelax; AF2; MD sidechain relaxation; Prodigy binding free
+Team Anonymous,2,466,7,0.015,25,Rational,Yes,,,,,,,ESMFold,,,Rational + ESMFold,ESMfold
+Nucleate UK London,3,414,159,0.384,1,LM,Yes,,Yes,,,Yes,,ESMFold,SolubleMPNN,?,ESMFold optimization design; SolubleMPNN; OpenMM,See Hie et al
+Perez Lab Gators,4,466,38,0.082,5,Diffusion,Yes,,,Yes,Yes,,"Yes, from Abs mostly",AlphaFold2,ProteinMPNN,,"RFdiffusion for binding residues (or used Ab epitopes), freeze, RFdiffusion again, ProteinMPNN, AF2",AF2
+Perforators,2,343,2,0.006,28,Diffusion most likely,Yes,,,,,,,ESMfold,ProteinMPNN,,Na,ESMfold
+The Physicist,3,466,16,0.034,16,LM,,,,,Yes,,"NCEPANPSEKNSPSTQYC (166-184, chain D, 6vja)",ESMFold,,,ESM2-based structure search for antibodies binding similar epitopes,
+Picaso Protein,4,466,15,0.032,19,"LM, Other",Yes,,,,Yes,,kiiiinda?,AlphaFold2,,,1) Nanobody + LM / Raygun; 2) de novo design; 3) make cyclic peptides w/ AF; Mutate from BLOSUM + AF2 pLDDT to optimize,AF2 refinement
+Schoeder Lab,3,466,28,0.06,7,"Diffusion, Hallucination",Yes,,Yes,,Yes,Yes,Yes,AlphaFold2,ProteinMPNN,Yes,"MD + PCA to get conformations, RFdiffusion, ProteinMPNN, AF2, Rosetta; OR: AF hallucination for peptides + linkers","AF, Rosetta"
+SNU LCDD,4,466,36,0.077,6,Diffusion,Yes,,Yes,,,,,AlphaFold2,ProteinMPNN,Yes,RFdiffusion De Novo or Graft Antibody CDR loops or graft CDRH3 only; ProteinMPNN; Rosetta filtering; AF2; MD,"Rosetta, AF2, MD"
+Tumor Inhibitors,3,466,23,0.049,10,Diffusion,Yes,,,,Yes,,Tyr161,AlphaFold2,ProteinMPNN,,"RFdiffusion (beta complex params), select backbones, ColabDesign & ProteinMPNN, AF2 screen","ensure contact with Tyr161 in ECL2, avoid long helices, prohibit contact to diffused neighbor, align w/ MemProtMD mem-bound structure, AF2 downsample"
+Undergraduate Design,3,466,14,0.03,20,Diffusion,Yes,,,Yes,,,,AlphaFold2,ProteinMPNN,,Iterative RFdiffusion with corruption; ProteinMPNN; AF2,AF2
+Virtue Therapeutics,2,48,2,0.042,13,BindCraft,,,,,Yes,,Res that H-bond w/ Ab in 6Y92,,,?,BindCraft,
+Zist Rayanesh,4,308,10,0.032,18,Diffusion,Yes,Yes,,,Yes,Yes,Yes,ColabFold,ProteinMPNN,Yes,Iterative RFdiffusion for minibinders + MPNN + FastRelax + linker scaffold + ColabFold + Pyrosetta,"FastRelax, ColabFold + Pyrosetta"

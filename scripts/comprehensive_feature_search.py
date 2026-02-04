@@ -38,7 +38,7 @@ results_df["leah_12k_Significant"] = results_df["leah_12k_Significant"].fillna(F
 exclude = ['global_id', 'team', 'sequence', 'dna_sequence', 'dssp', 
            'longest_dup_substr', 'longest_dup_substr_dna', 'is_linker']
 features = [col for col in metrics_df.columns 
-            if metrics_df[col].dtype in ['float64', 'int64'] 
+            if metrics_df[col].dtype in ['float64', 'int64', 'bool'] 
             and col not in exclude]
 
 print(f"Samples: {len(metrics_df)}, Features: {len(features)}")

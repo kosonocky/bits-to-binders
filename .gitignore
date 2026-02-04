@@ -4,7 +4,6 @@ results/*.csv
 
 tmp/
 _tmp/
-_adaptyv_selection_data/
 _archive/
 _archive_pre_reindex/
 data/good/mmseqs/
@@ -13,7 +12,6 @@ data/needs_recomputing/
 data/mpnn_score_cache/
 data/good/tlimmuno2/
 data/jakub/
-adaptyv_other/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

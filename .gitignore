@@ -12,14 +12,7 @@ data/mpnn_score_cache/
 data/individual/tlimmuno2/
 data/jakub/
 data/_adaptyv_selection_data/
-scripts/adaptyv/spr_analysis/fit_data/
-scripts/adaptyv/spr_analysis/raw_data/
-scripts/adaptyv/spr_analysis/adaptyv_computed/
-scripts/adaptyv/spr_analysis/anabel_output/
-scripts/adaptyv/spr_analysis/aux/
-scripts/adaptyv/spr_analysis/blanks/
-
-
+scripts/adaptyv/spr_analysis/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

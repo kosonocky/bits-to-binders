@@ -6,19 +6,18 @@ tmp/
 _tmp/
 _archive/
 _archive_pre_reindex/
-data/good/mmseqs/
-data/maybe_needs_recomputing_boltz/
+data/individual/mmseqs/
 data/needs_recomputing/
 data/mpnn_score_cache/
-data/good/tlimmuno2/
+data/individual/tlimmuno2/
 data/jakub/
 data/_adaptyv_selection_data/
-scripts/adaptyv/spr_2383/fit_data/
-scripts/adaptyv/spr_2383/raw_data/
-scripts/adaptyv/spr_2383/adaptyv_computed/
-scripts/adaptyv/spr_2383/anabel_output/
-scripts/adaptyv/spr_2383/aux/
-scripts/adaptyv/spr_2383/blanks/
+scripts/adaptyv/spr_analysis/fit_data/
+scripts/adaptyv/spr_analysis/raw_data/
+scripts/adaptyv/spr_analysis/adaptyv_computed/
+scripts/adaptyv/spr_analysis/anabel_output/
+scripts/adaptyv/spr_analysis/aux/
+scripts/adaptyv/spr_analysis/blanks/
 
 
 

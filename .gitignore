@@ -16,6 +16,10 @@ data/_adaptyv_selection_data/
 scripts/adaptyv/spr_2383/fit_data/
 scripts/adaptyv/spr_2383/raw_data/
 scripts/adaptyv/spr_2383/adaptyv_computed/
+scripts/adaptyv/spr_2383/anabel_output/
+scripts/adaptyv/spr_2383/aux/
+scripts/adaptyv/spr_2383/blanks/
+
 
 
 # Byte-compiled / optimized / DLL files

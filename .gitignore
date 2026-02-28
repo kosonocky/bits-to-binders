@@ -11,6 +11,7 @@ data/needs_recomputing/
 data/mpnn_score_cache/
 data/individual/tlimmuno2/
 data/jakub/
+data/predicted_structures/
 data/_adaptyv_selection_data/
 scripts/adaptyv/spr_analysis/
 

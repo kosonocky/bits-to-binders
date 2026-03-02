@@ -1,4 +1,4 @@
-# Bits to Binders: CD20 Protein Binder Design & Analysis
+# Data and analysis of CD20-targeting CAR binder domains in the *Bits to Binders* competition
 
 Analysis and datasets for computational protein binder design targeting human CD20. Covers ~12,000 designed sequences from a multi-team competition, including feature engineering, ML analysis, and experimental validation through display assays and SPR.
 

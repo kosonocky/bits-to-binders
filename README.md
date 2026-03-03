@@ -1,14 +1,14 @@
 # Data and analysis of CD20-targeting CAR binder domains in the *Bits to Binders* competition
 
-Analysis and datasets for computational protein binder design targeting human CD20. Covers ~12,000 designed sequences from a multi-team competition, including feature engineering, ML analysis, and experimental validation through display assays and SPR.
+This repository contains the datasets and analyses from the *Bits to Binders* AI-driven protein binder design competition. This repository contains all of the data used to analyze the 
 
 ## Structure
 
-- **`data/`** — Raw and processed datasets (sequences, structural metrics, experimental results)
-- **`scripts/`** — Analysis notebooks and Python/R scripts
-  - **`adaptyv/`** — Candidate selection and SPR binding affinity analysis
+- **`data/`** — Raw and processed datasets (sequences, structural metrics, experimental results). The most useful files here are probably "12k_all_metrics.csv" and "12k_all_results.csv".
+- **`misc/`** — Extra team methods and kickoff slides
+- **`scripts/`** — Analysis notebooks and Python scripts used to perform analysis and generate plots
+  - **`adaptyv/`** — Candidate selection for binding affinity study, and SPR results
 - **`results/`** — Plots and model outputs
-- **`misc/`** — Design workflow documentation and kickoff slides
 
 ## Key Files
 
@@ -20,3 +20,17 @@ Analysis and datasets for computational protein binder design targeting human CD
 
 
 ## Citing *Bits to Binders*
+
+(Jouranl and DOI coming soon)
+
+Kosonocky, C.W., Abel, A.M., Feller, A.L., Cifuentes Rieffer, A.E., Woolley, P.R., Lála, J., Barth, D.R., Gardner, T., Bits to Binders Competitors, Ekker, S.C., Ellington, A.D., Wierson, W.A., & Marcotte, E.M. (2026). Validation and analysis of 12,000 AI-driven CAR-T designs in the Bits to Binders competition. bioRxiv. https://doi.org/TBD
+
+```bibtex
+@article{kosonocky2025bits,
+  title={Validation and analysis of 12,000 AI-driven CAR-T designs in the Bits to Binders competition},
+  author={Kosonocky, Clayton W. and Abel, Alex M. and Feller, Aaron L. and Cifuentes Rieffer, Amanda E. and Woolley, Phillip R. and L{\'a}l{\'a}, Jakub and Barth, Daryl R. and Gardner, Tynan and {Bits to Binders Competitors} and Ekker, Stephen C. and Ellington, Andrew D. and Wierson, Wesley A. and Marcotte, Edward M.},
+  journal={bioRxiv},
+  year={2026},
+  doi={TBD}
+}
+```

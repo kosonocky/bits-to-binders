@@ -23,8 +23,6 @@ This repository contains the datasets and analyses from the *Bits to Binders* AI
 
 ## Citing *Bits to Binders*
 
-(Journal and DOI coming soon)
-
 Kosonocky, C.W., Abel, A.M., Feller, A.L., Cifuentes Rieffer, A.E., Woolley, P.R., Lála, J., Barth, D.R., Gardner, T., Bits to Binders Competitors, Ekker, S.C., Ellington, A.D., Wierson, W.A., & Marcotte, E.M. (2026). Validation and analysis of 12,000 AI-driven CAR-T designs in the Bits to Binders competition. bioRxiv. https://doi.org/10.64898/2026.03.03.709355
 
 ```bibtex

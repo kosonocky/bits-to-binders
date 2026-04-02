@@ -4,6 +4,22 @@
 
 This repository contains the datasets and analyses from the *Bits to Binders* AI-driven protein binder design competition. This repository contains all of the data used to analyze the submitted sequences.
 
+## Installation
+
+Requires [uv](https://docs.astral.sh/uv/getting-started/installation/). Install time is very fast (seconds).
+
+```bash
+uv sync
+```
+
+This will create a virtual environment and install all dependencies. To run scripts within it:
+
+```bash
+uv run python scripts/your_script.py
+# or activate the venv directly
+source .venv/bin/activate
+```
+
 ## Structure
 
 - **`data/`** — Raw and processed datasets (sequences, structural metrics, experimental results). The most useful files here are probably "12k_all_metrics.csv" and "12k_all_results.csv".
